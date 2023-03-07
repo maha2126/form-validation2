@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const handleSubmit = event => {
+    event.preventDefault()
+  }
+  const [user, setUser] = useState({name:"",age:""})
+  return <div>
+    <h1>Working with Form!!</h1>
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={user.name} placeholder="Name" onChange={ e => setUser({...user, name:e.target.value})}/>
+      <input type="text" value={user.age} placeholder="Age" onChange={ e => setUser({...user, age:e.target.value})}/>
+      <button >Send</button>
+    </form>
+  </div>
 }
 
 export default App;
